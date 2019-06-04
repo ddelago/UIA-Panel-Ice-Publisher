@@ -28,6 +28,7 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
     class PrinterPrx(Ice.ObjectPrx):
 
         def printString(self, s, context=None):
+            # print s
             return _M_Demo.Printer._op_printString.invoke(self, ((s, ), context))
 
         def printStringAsync(self, s, context=None):

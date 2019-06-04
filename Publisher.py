@@ -1,4 +1,4 @@
-import sys, Ice, IceStorm
+import sys, Ice, IceStorm, time
 import Demo
  
 with Ice.initialize(sys.argv) as communicator:
@@ -9,3 +9,10 @@ with Ice.initialize(sys.argv) as communicator:
     topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'New_Topic')
 
     print topic
+
+    pub = topic.getPublisher().ice_oneway()
+    printer = Demo.PrinterPrx.uncheckedCast(pub)
+
+    while True:
+        time.sleep(.500)
+        printer.printString("Hello World")
