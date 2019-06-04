@@ -2,6 +2,7 @@ import requests
 import sys
 import RPi.GPIO as GPIO
 import sys, Ice, IceStorm, time
+Ice.loadSlice("UIA.ice")
 import UIA
  
 with Ice.initialize(sys.argv) as communicator:
