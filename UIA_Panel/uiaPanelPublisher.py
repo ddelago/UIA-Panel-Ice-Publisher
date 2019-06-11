@@ -143,7 +143,7 @@ with Ice.initialize(sys.argv) as communicator:
                 print('O2 VENT OFF')
 
             #r = requests.patch('http://192.70.120.211:3000/api/simulation/newuiacontrols', params = payload)
-            panel.sendState("Hello World from Panel!")
+            panel.sendState(payload)
 
             #print(r.url)
 
