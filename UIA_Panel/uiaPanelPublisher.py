@@ -55,12 +55,12 @@ with Ice.initialize(sys.argv) as communicator:
                 GPIO.output(17,1)
                 GPIO.output(4, 0)
                 payload ['depress_pump'] = 'true'
-                print ("ENABLE")
+                #print ("ENABLE")
             else:
                 GPIO.output(17,0)
                 GPIO.output(4, 1)
                 payload ['depress_pump'] = 'false'
-                print ("FAULT")
+                #print ("FAULT")
 
         #EV1
         #green led only
@@ -68,35 +68,35 @@ with Ice.initialize(sys.argv) as communicator:
             if (GPIO.input(22) == False):
                 GPIO.output(27,1)
                 payload ['emu1'] = 'true'
-                print ("EV1 ON")
+                #print ("EV1 ON")
             else:
                 GPIO.output(27,0)
                 payload ['emu1'] = 'false'
-                print ("EV1 OFF")
+                #print ("EV1 OFF")
 
             #EV1 SUPPLY on/off
             if (GPIO.input(10) == False):
                 payload['ev1_supply'] = 'true'
-                print('SUPPLY1 ON')
+                #print('SUPPLY1 ON')
             else:
                 payload['ev1_supply'] = 'false'
-                print('SUPPLY1 OFF')
+                #print('SUPPLY1 OFF')
 
             #EV1 WASTE on/off
             if (GPIO.input(9) == False):
                 payload['ev1_waste'] = 'true'
-                print('WASTE1 ON')
+                #print('WASTE1 ON')
             else:
                 payload['ev1_waste'] = 'false'
-                print('WASTE2 OFF')
+                #print('WASTE2 OFF')
 
             #EMU1 OXYGEN on/off
             if (GPIO.input(25) == False):
                 payload['emu1_O2'] = 'true'
-                print('OXYGEN1 ON')
+                #print('OXYGEN1 ON')
             else:
                 payload['emu1_O2'] = 'false'
-                print('OXYGEN2 OFF')
+                #print('OXYGEN2 OFF')
 
         #EV2
         #green led only
@@ -104,47 +104,49 @@ with Ice.initialize(sys.argv) as communicator:
             if (GPIO.input(24) == False):
                 GPIO.output(23,1)
                 payload ['emu2'] = 'true'
-                print ("EV2 ON")
+                #print ("EV2 ON")
             else:
                 GPIO.output(23,0)
                 payload ['emu2'] = 'false'
-                print ("EV2 OFF")
+                #print ("EV2 OFF")
 
             #EV2 SUPPLY on/off
             if (GPIO.input(26) == False):
                 payload['ev2_supply'] = 'true'
-                print('SUPPLY2 ON')
+                #print('SUPPLY2 ON')
             else:
                 payload['ev2_supply'] = 'false'
-                print('SUPPLY2 OFF')
+                #print('SUPPLY2 OFF')
 
             #EV2 WASTE on/off
             if (GPIO.input(16) == False):
                 payload['ev2_waste'] = 'true'
-                print('WASTE2 ON')
+                #print('WASTE2 ON')
             else:
                 payload['ev2_waste'] = 'false'
-                print('WASTE2 OFF')
+                #print('WASTE2 OFF')
 
             #EMU2 OXYGEN on/off
             if (GPIO.input(20) == False):
                 payload['emu2_O2'] = 'true'
-                print('OXYGEN2 ON')
+                #print('OXYGEN2 ON')
             else:
                 payload['emu2_O2'] = 'false'
-                print('OXYGEN2 OFF')
+                #print('OXYGEN2 OFF')
 
         #O2 Vent
             if (GPIO.input(21) == False):
                 payload['O2_vent'] = 'true'
-                print('O2 VENT ON')
+                #print('O2 VENT ON')
             else:
                 payload['O2_vent'] = 'false'
-                print('O2 VENT OFF')
+                #print('O2 VENT OFF')
 
             #r = requests.patch('http://192.70.120.211:3000/api/simulation/newuiacontrols', params = payload)
             panel.sendState(payload)
-
+            print(payload)
+            time.sleep(.250)
+    
             #print(r.url)
 
     #except KeyboardInterrupt:
