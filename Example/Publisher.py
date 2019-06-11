@@ -7,12 +7,13 @@ with Ice.initialize(sys.argv) as communicator:
 
     # IceStorm.TopicManagerPrx.create(topicManagerProxy, 'New_Topic')
     topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'New_Topic')
-
-    print topic
+    topic2 = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_cmd_topic')
+    print topicManagerProxy.retrieveAll()
+    # print topic2.ice_ids()
 
     pub = topic.getPublisher().ice_oneway()
     printer = Demo.PrinterPrx.uncheckedCast(pub)
 
     while True:
-        time.sleep(.500)
+        time.sleep(1)
         printer.printString("Hello World")

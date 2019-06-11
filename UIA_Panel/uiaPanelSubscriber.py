@@ -1,4 +1,5 @@
 import sys, Ice, IceStorm
+Ice.loadSlice("UIA.ice")
 import UIA
  
 class PanelI(UIA.PanelSwitches):
