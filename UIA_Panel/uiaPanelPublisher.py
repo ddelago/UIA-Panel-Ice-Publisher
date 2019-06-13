@@ -58,11 +58,13 @@ with Ice.initialize(sys.argv) as communicator:
             if (GPIO.input(18) == False):
                 GPIO.output(17,1)
                 GPIO.output(4, 0)
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_DEPRESS', 'ON'))
                 payload ['depress_pump'] = 'true'
                 #print ("ENABLE")
             else:
                 GPIO.output(17,0)
                 GPIO.output(4, 1)
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_DEPRESS', 'OFF'))
                 payload ['depress_pump'] = 'false'
                 #print ("FAULT")
 
@@ -71,36 +73,42 @@ with Ice.initialize(sys.argv) as communicator:
             #EMU1 on/off
             if (GPIO.input(22) == False):
                 GPIO.output(27,1)
-                payload ['emu1'] = 'true'
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_POWER', 'ON'))
+                payload ['emu1'] = 'true'
                 #print ("EV1 ON")
             else:
                 GPIO.output(27,0)
-                payload ['emu1'] = 'false'
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_POWER', 'OFF'))
+                payload ['emu1'] = 'false'
                 #print ("EV1 OFF")
 
             #EV1 SUPPLY on/off
             if (GPIO.input(10) == False):
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_SUPPLY', 'ON'))
                 payload['ev1_supply'] = 'true'
                 #print('SUPPLY1 ON')
             else:
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_SUPPLY', 'OFF'))
                 payload['ev1_supply'] = 'false'
                 #print('SUPPLY1 OFF')
 
             #EV1 WASTE on/off
             if (GPIO.input(9) == False):
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_WASTE', 'ON'))
                 payload['ev1_waste'] = 'true'
                 #print('WASTE1 ON')
             else:
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_WASTE', 'OFF'))
                 payload['ev1_waste'] = 'false'
                 #print('WASTE2 OFF')
 
             #EMU1 OXYGEN on/off
             if (GPIO.input(25) == False):
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_OXYGEN', 'ON'))
                 payload['emu1_O2'] = 'true'
                 #print('OXYGEN1 ON')
             else:
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_OXYGEN', 'OFF'))
                 payload['emu1_O2'] = 'false'
                 #print('OXYGEN2 OFF')
 
@@ -109,42 +117,52 @@ with Ice.initialize(sys.argv) as communicator:
             #EMU2 on/off
             if (GPIO.input(24) == False):
                 GPIO.output(23,1)
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_POWER', 'ON'))
                 payload ['emu2'] = 'true'
                 #print ("EV2 ON")
             else:
                 GPIO.output(23,0)
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_POWER', 'OFF'))
                 payload ['emu2'] = 'false'
                 #print ("EV2 OFF")
 
             #EV2 SUPPLY on/off
             if (GPIO.input(26) == False):
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_SUPPLY', 'ON'))
                 payload['ev2_supply'] = 'true'
                 #print('SUPPLY2 ON')
             else:
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_SUPPLY', 'OFF'))
                 payload['ev2_supply'] = 'false'
                 #print('SUPPLY2 OFF')
 
             #EV2 WASTE on/off
             if (GPIO.input(16) == False):
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_WASTE', 'ON'))
                 payload['ev2_waste'] = 'true'
                 #print('WASTE2 ON')
             else:
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_WASTE', 'OFF'))
                 payload['ev2_waste'] = 'false'
                 #print('WASTE2 OFF')
 
             #EMU2 OXYGEN on/off
             if (GPIO.input(20) == False):
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_OXYGEN', 'ON'))
                 payload['emu2_O2'] = 'true'
                 #print('OXYGEN2 ON')
             else:
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_OXYGEN', 'OFF'))
                 payload['emu2_O2'] = 'false'
                 #print('OXYGEN2 OFF')
 
         #O2 Vent
             if (GPIO.input(21) == False):
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_VENT', 'ON'))
                 payload['O2_vent'] = 'true'
                 #print('O2 VENT ON')
             else:
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_VENT', 'OFF'))
                 payload['O2_vent'] = 'false'
                 #print('O2 VENT OFF')
 
