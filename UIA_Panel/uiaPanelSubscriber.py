@@ -1,9 +1,9 @@
 import sys, Ice, IceStorm
-Ice.loadSlice("UIA.ice")
-import UIA
+Ice.loadSlice("eproc_cmd_tlm.ice")
+import gov.nasa.jsc.er
  
-class PanelI(UIA.PanelSwitches):
-    def sendState(self, s, current=None):
+class PanelI(gov.nasa.jsc.er.Telemetry):
+    def transfer(self, s, current=None):
         print s
  
 with Ice.initialize(sys.argv) as communicator:
@@ -16,7 +16,7 @@ with Ice.initialize(sys.argv) as communicator:
     subscriber = adapter.addWithUUID(panel).ice_oneway()
     adapter.activate()
 
-    topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'UIA_Panel')
+    topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic')
 
     qos = {}
     qos["retryCount"] = "0"

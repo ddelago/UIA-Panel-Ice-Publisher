@@ -2,25 +2,21 @@ import requests
 import sys
 import RPi.GPIO as GPIO
 import sys, Ice, IceStorm, time
-Ice.loadSlice("UIA.ice")
-import UIA
+Ice.loadSlice("eproc_cmd_tlm.ice")
+import gov.nasa.jsc.er
  
 with Ice.initialize(sys.argv) as communicator:
     base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.137.1 -p 10000")
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
 
     # Create topic if it doesn't exist already
-    # IceStorm.TopicManagerPrx.create(topicManagerProxy, 'UIA_Panel')
-    topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'UIA_Panel')
-    if(topic is None):
-        IceStorm.TopicManagerPrx.create(topicManagerProxy, 'UIA_Panel')
+    topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic')
 
     # Create publisher object
     pub = topic.getPublisher().ice_oneway()
-    panel = UIA.PanelSwitchesPrx.uncheckedCast(pub)
+    panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
 
-    print(topic, panel)
-
+    header = gov.nasa.jsc.er.MessageHeader(0, 'TELEMETRY', 'SWITCH_PANEL') 
 
     GPIO.setmode (GPIO.BCM)
 
@@ -49,6 +45,7 @@ with Ice.initialize(sys.argv) as communicator:
 
     try:
         while True:
+            seqTelem = []
         #UIA Depress Pump
         #green enable / yellow fault LEDs
             if (GPIO.input(18) == False):
@@ -68,10 +65,12 @@ with Ice.initialize(sys.argv) as communicator:
             if (GPIO.input(22) == False):
                 GPIO.output(27,1)
                 payload ['emu1'] = 'true'
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_POWER', 'ON'))
                 #print ("EV1 ON")
             else:
                 GPIO.output(27,0)
                 payload ['emu1'] = 'false'
+                seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_POWER', 'OFF'))
                 #print ("EV1 OFF")
 
             #EV1 SUPPLY on/off
@@ -143,8 +142,9 @@ with Ice.initialize(sys.argv) as communicator:
                 #print('O2 VENT OFF')
 
             #r = requests.patch('http://192.70.120.211:3000/api/simulation/newuiacontrols', params = payload)
-            panel.sendState(payload)
-            print(payload)
+            telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
+            panel.transfer(telemMessage)
+            # print(payload)
             time.sleep(.250)
     
             #print(r.url)

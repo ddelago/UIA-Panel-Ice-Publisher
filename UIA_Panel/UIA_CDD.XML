@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpaceSystem xmlns="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="HAL" xsi:schemaLocation="http://www.omg.org/space/xtce SpaceSystemV1.0.xsd">
+	<Header version="2.0" date="Wed Jun 12 10:27:03 CDT 2019" classification="DOMAIN" validationStatus="Working"/>
+	<SpaceSystem name="UIA">
+		<Header classification="SYSTEM" validationStatus="Working"/>
+		<SpaceSystem name="SWITCH_PANEL">
+			<Header classification="INTERFACE" validationStatus="Working"/>
+			<TelemetryMetaData>
+				<ParameterTypeSet>
+					<EnumeratedParameterType name="EMU1_POWER">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="EMU2_POWER">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="EV1_WATER_SUPPLY">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="EV1_WATER_WASTE">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="EV2_WATER_SUPPLY">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="EV2_WATER_WASTE">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="EMU1_OXYGEN">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="EMU2_OXYGEN">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="O2_VENT">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+					<EnumeratedParameterType name="O2_DEPRESS">
+						<UnitSet>
+							<Unit/>
+						</UnitSet>
+						<IntegerDataEncoding sizeInBits="8"/>
+						<EnumerationList>
+							<Enumeration value="0" label="OFF"/>
+							<Enumeration value="1" label="ON"/>
+						</EnumerationList>
+					</EnumeratedParameterType>
+				</ParameterTypeSet>
+				<ParameterSet>
+					<Parameter parameterTypeRef="EMU1_POWER" name="EMU1_POWER">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EMU1_POWER</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="EMU2_POWER" name="EMU2_POWER">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EMU2_POWER</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="EV1_WATER_SUPPLY" name="EV1_WATER_SUPPLY">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EV1_WATER_SUPPLY</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="EV1_WATER_WASTE" name="EV1_WATER_WASTE">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EV1_WATER_WASTE</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="EV2_WATER_SUPPLY" name="EV2_WATER_SUPPLY">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EV2_WATER_SUPPLY</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="EV2_WATER_WASTE" name="EV2_WATER_WASTE">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EV2_WATER_WASTE</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="EMU1_OXYGEN" name="EMU1_OXYGEN">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EMU1_OXYGEN</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="EMU2_OXYGEN" name="EMU2_OXYGEN">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.EMU2_OXYGEN</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="O2_VENT" name="O2_VENT">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.O2_VENT</SystemName>
+						</ParameterProperties>
+					</Parameter>
+					<Parameter parameterTypeRef="O2_DEPRESS" name="O2_DEPRESS">
+						<ParameterProperties>
+							<SystemName>HAL.UIA.SWITCH_PANEL.O2_DEPRESS</SystemName>
+						</ParameterProperties>
+					</Parameter>
+				</ParameterSet>
+				<ContainerSet>
+					<SequenceContainer name="TELEMETRY">
+						<EntryList>
+							<ParameterRefEntry parameterRef="EMU1_POWER"/>
+							<ParameterRefEntry parameterRef="EMU2_POWER"/>
+							<ParameterRefEntry parameterRef="EV1_WATER_SUPPLY"/>
+							<ParameterRefEntry parameterRef="EV1_WATER_WASTE"/>
+							<ParameterRefEntry parameterRef="EV2_WATER_SUPPLY"/>
+							<ParameterRefEntry parameterRef="EV2_WATER_WASTE"/>
+							<ParameterRefEntry parameterRef="EMU1_OXYGEN"/>
+							<ParameterRefEntry parameterRef="EMU2_OXYGEN"/>
+							<ParameterRefEntry parameterRef="O2_VENT"/>
+							<ParameterRefEntry parameterRef="O2_DEPRESS"/>
+						</EntryList>
+					</SequenceContainer>
+				</ContainerSet>
+			</TelemetryMetaData>
+		</SpaceSystem>
+	</SpaceSystem>
+</SpaceSystem>
