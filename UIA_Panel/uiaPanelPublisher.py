@@ -5,12 +5,16 @@ from variable_server import VariableServer
 import sys, Ice, IceStorm, time
 Ice.loadSlice("eproc_cmd_tlm.ice")
 import gov.nasa.jsc.er
- 
+    
+print("Connecting to Trick")
 """  Trick Initialization """
 variable_server = VariableServer(sys.argv[1], sys.argv[2])
 variable_server.get_value('dyn.uia.oxygen.supply_pressure')
+print("Connected")
+
 
 with Ice.initialize(sys.argv) as communicator:
+    print("Initializing IceStorm")
     """  ICE Storm Initialization """
     base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
