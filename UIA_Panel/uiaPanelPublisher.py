@@ -1,11 +1,17 @@
 import requests
 import sys
 import RPi.GPIO as GPIO
+from variable_server import VariableServer
 import sys, Ice, IceStorm, time
 Ice.loadSlice("eproc_cmd_tlm.ice")
 import gov.nasa.jsc.er
  
+"""  Trick Initialization """
+variable_server = VariableServer(sys.argv[1], sys.argv[2])
+variable_server.get_value('dyn.uia.oxygen.supply_pressure')
+
 with Ice.initialize(sys.argv) as communicator:
+    """  ICE Storm Initialization """
     base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
 
@@ -15,9 +21,8 @@ with Ice.initialize(sys.argv) as communicator:
     # Create publisher object
     pub = topic.getPublisher().ice_oneway()
     panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
-
     header = gov.nasa.jsc.er.MessageHeader(0, 'TELEMETRY', 'SWITCH_PANEL') 
-    
+
     GPIO.setmode (GPIO.BCM)
 
     #Depress Pump GPIOs
