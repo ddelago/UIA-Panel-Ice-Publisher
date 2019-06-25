@@ -173,7 +173,9 @@ with Ice.initialize(sys.argv) as communicator:
                 #print('O2 VENT OFF')
 
             #r = requests.patch('http://192.70.120.211:3000/api/simulation/newuiacontrols', params = payload)
+            print("make telem")
             telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
+            print("transfer telem")
             panel.transfer(telemMessage)
             print(payload)
             time.sleep(.250)
