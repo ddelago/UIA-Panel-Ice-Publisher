@@ -13,20 +13,23 @@ print(variable_server.get_value('dyn.uia.oxygen.supply_pressure'))
 print("Connected")
 
 
-with Ice.initialize(sys.argv[0]) as communicator:
+with Ice.initialize(sys.argv) as communicator:
     print("Initializing IceStorm")
     """  ICE Storm Initialization """
     base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
+    print(1)
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
-
+    print(2)
     # Create topic if it doesn't exist already
     topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic')
-
+    print(3)
     # Create publisher object
     pub = topic.getPublisher().ice_oneway()
+    print(4)
     panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
+    print(5)
     header = gov.nasa.jsc.er.MessageHeader(0, 'TELEMETRY', 'SWITCH_PANEL') 
-
+    print(6)
     GPIO.setmode (GPIO.BCM)
 
     #Depress Pump GPIOs
