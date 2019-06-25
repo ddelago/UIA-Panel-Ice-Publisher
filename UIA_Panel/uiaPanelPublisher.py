@@ -21,10 +21,12 @@ with Ice.initialize(sys.argv) as communicator:
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
     print(2)
     # Create topic if it doesn't exist already
-    topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic').getPublisher()
+    topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic')
     print(3)
+    publisher = topic.getPublisher()
+    print(3.5)
     # Create publisher object
-    pub = topic.ice_oneway()
+    pub = publisher.ice_oneway()
     print(pub)
     print(4)
     panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
