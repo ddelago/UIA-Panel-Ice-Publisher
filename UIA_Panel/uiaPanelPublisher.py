@@ -9,7 +9,7 @@ import gov.nasa.jsc.er
 print("Connecting to Trick")
 """  Trick Initialization """
 variable_server = VariableServer(sys.argv[1], sys.argv[2])
-variable_server.get_value('dyn.uia.oxygen.supply_pressure')
+print(variable_server.get_value('dyn.uia.oxygen.supply_pressure'))
 print("Connected")
 
 
