@@ -16,7 +16,7 @@ print("Connected")
 with Ice.initialize(sys.argv) as communicator:
     print("Initializing IceStorm")
     """  ICE Storm Initialization """
-    base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000 -t 5000")
+    base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
     print(1)
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
     print(2)
