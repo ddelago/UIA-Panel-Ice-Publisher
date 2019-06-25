@@ -6,24 +6,17 @@ Ice.loadSlice("eproc_cmd_tlm.ice")
 import gov.nasa.jsc.er
  
 with Ice.initialize(sys.argv) as communicator:
-    print('1')
     base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
 
-    print('2')
     # Create topic if it doesn't exist already
     topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic')
 
-    print('3')
     # Create publisher object
     pub = topic.getPublisher().ice_oneway()
-    print('3.5')
     panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
 
-    print('4')
     header = gov.nasa.jsc.er.MessageHeader(0, 'TELEMETRY', 'SWITCH_PANEL') 
-
-    print('5')
     
     GPIO.setmode (GPIO.BCM)
 
@@ -52,7 +45,6 @@ with Ice.initialize(sys.argv) as communicator:
 
     try:
         while True:
-            print('hello')
             seqTelem = []
         #UIA Depress Pump
         #green enable / yellow fault LEDs
@@ -169,7 +161,6 @@ with Ice.initialize(sys.argv) as communicator:
 
             #r = requests.patch('http://192.70.120.211:3000/api/simulation/newuiacontrols', params = payload)
             telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
-            print("tansfering", telemMessage)
             panel.transfer(telemMessage)
             print(payload)
             time.sleep(.250)
