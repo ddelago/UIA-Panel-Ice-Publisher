@@ -25,6 +25,7 @@ with Ice.initialize(sys.argv) as communicator:
     print(3)
     # Create publisher object
     pub = topic.getPublisher().ice_oneway()
+    print(pub)
     print(4)
     panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
     print(5)
