@@ -7,7 +7,7 @@ import gov.nasa.jsc.er
  
 with Ice.initialize(sys.argv) as communicator:
     print('1')
-    base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.137.1 -p 10000")
+    base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
 
     print('2')
@@ -17,6 +17,7 @@ with Ice.initialize(sys.argv) as communicator:
     print('3')
     # Create publisher object
     pub = topic.getPublisher().ice_oneway()
+    print('3.5')
     panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
 
     print('4')
@@ -168,7 +169,7 @@ with Ice.initialize(sys.argv) as communicator:
 
             #r = requests.patch('http://192.70.120.211:3000/api/simulation/newuiacontrols', params = payload)
             telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
-            print("tansfering")
+            print("tansfering", telemMessage)
             panel.transfer(telemMessage)
             print(payload)
             time.sleep(.250)
