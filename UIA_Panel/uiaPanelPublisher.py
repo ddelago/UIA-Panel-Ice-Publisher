@@ -13,7 +13,7 @@ print(variable_server.get_value('dyn.uia.oxygen.supply_pressure'))
 print("Connected")
 
 
-with Ice.initialize(sys.argv) as communicator:
+with Ice.initialize(sys.argv[0]) as communicator:
     print("Initializing IceStorm")
     """  ICE Storm Initialization """
     base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
