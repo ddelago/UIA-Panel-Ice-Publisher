@@ -99,7 +99,7 @@ with Ice.initialize(sys.argv) as communicator:
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_WASTE', 'OFF'))
                 payload['ev1_waste'] = 'false'
-                variable_server.set_value('dyn.uia.ev[0].water.waster', 0)
+                variable_server.set_value('dyn.uia.ev[0].water.waste', 0)
 
             #EMU1 OXYGEN on/off
             if (GPIO.input(25) == False):
