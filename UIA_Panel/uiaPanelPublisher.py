@@ -15,23 +15,23 @@ print(variable_server.get_value('dyn.uia.oxygen.supply_pressure'))
 with Ice.initialize(sys.argv) as communicator:
     print("Initializing IceStorm")
     """  ICE Storm Initialization """
-    # base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000")
-    # print(1)
-    # topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
-    # print(2)
-    # # Create topic if it doesn't exist already
-    # topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic')
-    # print(3)
-    # publisher = topic.getPublisher()
-    # print(3.5)
-    # # Create publisher object
-    # pub = publisher.ice_oneway()
-    # print(pub)
-    # print(4)
-    # panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
-    # print(5)
-    # header = gov.nasa.jsc.er.MessageHeader(0, 'TELEMETRY', 'SWITCH_PANEL') 
-    # print(6)
+    base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h 192.168.3.100 -p 10000 -t 5000")
+    print(1)
+    topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
+    print(2)
+    # Create topic if it doesn't exist already
+    topic = IceStorm.TopicManagerPrx.retrieve(topicManagerProxy, 'eproc_tlm_topic')
+    print(3)
+    publisher = topic.getPublisher()
+    print(3.5)
+    # Create publisher object
+    pub = publisher.ice_oneway()
+    print(pub)
+    print(4)
+    panel = gov.nasa.jsc.er.TelemetryPrx.uncheckedCast(pub)
+    print(5)
+    header = gov.nasa.jsc.er.MessageHeader(0, 'TELEMETRY', 'SWITCH_PANEL') 
+    print(6)
     GPIO.setmode (GPIO.BCM)
 
     #Depress Pump GPIOs
@@ -194,10 +194,10 @@ with Ice.initialize(sys.argv) as communicator:
                 #print('O2 VENT OFF')
 
             #r = requests.patch('http://192.70.120.211:3000/api/simulation/newuiacontrols', params = payload)
-            # print("make telem")
-            # telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
-            # print("transfer telem")
-            # panel.transfer(telemMessage)
+            print("make telem")
+            telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
+            print("transfer telem")
+            panel.transfer(telemMessage)
             
             # Trick connection
 
