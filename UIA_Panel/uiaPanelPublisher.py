@@ -13,6 +13,8 @@ oxygen_supply_pressure = variable_server.get_value('dyn.uia.oxygen.supply_pressu
 emu1_voltage = variable_server.get_value('dyn.uia.emu[0].power.voltage')
 emu2_voltage = variable_server.get_value('dyn.uia.emu[1].power.voltage')
 
+print(oxygen_supply_pressure, emu1_voltage, emu2_voltage)
+
 with Ice.initialize(sys.argv) as communicator:
     print("Initializing IceStorm")
     """  ICE Storm Initialization """
