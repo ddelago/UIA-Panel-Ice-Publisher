@@ -9,9 +9,6 @@ import gov.nasa.jsc.er
 print("Connecting to Trick")
 """  Trick Initialization """
 variable_server = VariableServer(sys.argv[1], sys.argv[2])
-oxygen_supply_pressure = variable_server.get_value('dyn.uia.oxygen.supply_pressure')
-emu1_voltage = variable_server.get_value('dyn.uia.emu[0].power.voltage')
-emu2_voltage = variable_server.get_value('dyn.uia.emu[1].power.voltage')
 
 with Ice.initialize(sys.argv) as communicator:
     print("Initializing IceStorm")
@@ -172,6 +169,9 @@ with Ice.initialize(sys.argv) as communicator:
             telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
             panel.transfer(telemMessage)
             
+            oxygen_supply_pressure = variable_server.get_value('dyn.uia.oxygen.supply_pressure')
+            emu1_voltage = variable_server.get_value('dyn.uia.emu[0].power.voltage')
+            emu2_voltage = variable_server.get_value('dyn.uia.emu[1].power.voltage')
             print("Oxygen Supply Pressure: {}\nEMU1 Voltage: {}\nEMU2 Voltage: {}".format(oxygen_supply_pressure, emu1_voltage, emu2_voltage))
             print(payload)
             time.sleep(.250)
