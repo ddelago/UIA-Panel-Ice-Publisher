@@ -63,7 +63,7 @@ with Ice.initialize(sys.argv) as communicator:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_DEPRESS', 'ON'))
                 payload['depress_pump'] = 'true'
                 variable_server.set_value('dyn.uia.oxygen.depress_pump', 1)
-           else:
+            else:
                 GPIO.output(17,0)
                 GPIO.output(4, 1)
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_DEPRESS', 'OFF'))
