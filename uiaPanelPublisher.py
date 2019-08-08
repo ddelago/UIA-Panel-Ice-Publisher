@@ -18,6 +18,8 @@ parser.add_argument(
     '--trickPort', type=str, help='Trick Sim Port Number', required=True)
 parser.add_argument(
     '--iceAddr', type=str, help='Ice IP Address (eProc)', required=True)
+parser.add_argument(
+    '--Ice.Ice.Override.ConnectTimeout', type=str, help='Timeout value for Ice connection attempts', required=False)
 
 # Array for all arguments passed to script
 args = parser.parse_args()
