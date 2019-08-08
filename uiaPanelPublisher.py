@@ -19,11 +19,10 @@ parser.add_argument(
 parser.add_argument(
     '--iceAddr', type=str, help='Ice IP Address (eProc)', required=True)
 parser.add_argument(
-    '--Ice.Ice.Override.ConnectTimeout', type=str, help='Timeout value for Ice connection attempts', required=False)
+    '--Ice.Override.ConnectTimeout', type=str, help='Timeout value for Ice connection attempts', required=False)
 
 # Array for all arguments passed to script
 args = parser.parse_args()
-
 
 print("Connecting to Trick at {}:{}".format(args.trickAddr, args.trickPort))
 """  Trick Initialization """
