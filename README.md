@@ -9,10 +9,29 @@ ZeroC IceStorm Publisher and Subscriber in Python for UIA Panel with Trick Conne
 4. Clone this repository onto Raspberry Pi
 
 ## Running
+The file that you would run on the Raspberry Pi would be the `uiaPanelPublisher.py` Python file. 
+To run, a few command line arguements are needed:
+- Trick IP Address (Optional)
+- Trick IP Port (Optional)
+- Ice IP Address (Required)
+- Ice Override Connection Timeout Flag (**Required!** Or else execution could hang)
+- Ice Trace Protocol (Optional, for debugging)
+- Ice Trace Network (Optional, for debugging)
 
-python uiaPanelPublisher.py {Trick Ip} {Trick Port} --Ice.Trace.Protocol --Ice.Trace.Network=2 --Ice.Override.ConnectTimeout=2000
-python uiaPanelPublisher.py 192.168.3.104 44803 --Ice.Override.ConnectTimeout=2000
-python uiaPanelPublisher.py 192.168.3.109 40463 --Ice.Trace.Protocol --Ice.Trace.Network=2 --Ice.Override.ConnectTimeout=2000
-
-Debugging
-python uiaPanelPublisher.py {Trick Ip} {Trick Port} --Ice.Trace.Protocol --Ice.Trace.Network=2 --Ice.Override.ConnectTimeout=2000
+Example executions:
+- With Connection to Trick
+    ```bash
+    $ python uiaPanelPublisher.py --trickAddr={Trick Ip} --trickPort={Trick Port} --iceAddr={Ice Address} --Ice.Override.ConnectTimeout=2000
+    ```
+- Without Connection to Trick
+    ```bash
+    $ python uiaPanelPublisher.py --iceAddr={Ice Address} --Ice.Override.ConnectTimeout=2000
+    ```
+- With Ice Debugging
+    ```bash
+    $ python uiaPanelPublisher.py --iceAddr={Ice Address} --Ice.Trace.Protocol --Ice.Trace.Network=2 --Ice.Override.ConnectTimeout=2000
+    ```
+- Real Example
+    ```bash
+    $ python uiaPanelPublisher.py --iceAddr=192.168.3.100 --Ice.Override.ConnectTimeout=2000
+    ```
