@@ -5,16 +5,33 @@ from variable_server import VariableServer
 import sys, Ice, IceStorm, time
 Ice.loadSlice("eproc_cmd_tlm.ice")
 import gov.nasa.jsc.er
+import argparse
     
-print("Connecting to Trick at {}:{}".format(sys.argv[1], sys.argv[2]))
+# Assign description to the help doc
+parser = argparse.ArgumentParser(
+    description='Starts connection to Trick and Ice and streams UIA Panel State')
+
+# Add arguments
+parser.add_argument(
+    '--trickAddr', type=str, help='Trick Sim IP Address', required=True)
+parser.add_argument(
+    '--trickPort', type=str, help='Trick Sim Port Number', required=True)
+parser.add_argument(
+    '--iceAddr', type=str, help='Ice IP Address (eProc)', required=True)
+
+# Array for all arguments passed to script
+args = parser.parse_args()
+
+
+print("Connecting to Trick at {}:{}".format(args.trickAddr, args.trickPort))
 """  Trick Initialization """
-# variable_server = VariableServer(sys.argv[1], sys.argv[2])
+# variable_server = VariableServer(args.trickAddr, args.trickPort)
 print("connected to trick")
 
 with Ice.initialize(sys.argv) as communicator:
     print("Initializing IceStorm")
     """  ICE Storm Initialization """
-    base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h {} -p 10000".format(sys.argv[3]))
+    base = communicator.stringToProxy("DemoIceStorm/TopicManager:default -h {} -p 10000".format(args.iceAddr))
     topicManagerProxy = IceStorm.TopicManagerPrx.checkedCast(base)
     
     # Create topic if it doesn't exist already
