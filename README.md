@@ -23,7 +23,7 @@ Example executions:
     ```bash
     $ python uiaPanelPublisher.py --trickAddr={Trick Ip} --trickPort={Trick Port} --iceAddr={Ice Address} --Ice.Override.ConnectTimeout=2000
     ```
-- Without Connection to Trick
+- Without Connection to Trick (Only Ice)
     ```bash
     $ python uiaPanelPublisher.py --iceAddr={Ice Address} --Ice.Override.ConnectTimeout=2000
     ```
