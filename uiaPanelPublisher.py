@@ -13,9 +13,11 @@ parser = argparse.ArgumentParser(
 
 # Add arguments
 parser.add_argument(
-    '--trickAddr', type=str, help='Trick Sim IP Address', required=True)
+    '--trickEnabled', action='store_true', help='Enable trick connection. If enabled, trickAddr and trickPort are required.', required=False)
 parser.add_argument(
-    '--trickPort', type=str, help='Trick Sim Port Number', required=True)
+    '--trickAddr', type=str, help='Trick Sim IP Address', required=False)
+parser.add_argument(
+    '--trickPort', type=str, help='Trick Sim Port Number', required=False)
 parser.add_argument(
     '--iceAddr', type=str, help='Ice IP Address (eProc)', required=True)
 parser.add_argument(
@@ -26,7 +28,8 @@ args = parser.parse_args()
 
 print("Connecting to Trick at {}:{}".format(args.trickAddr, args.trickPort))
 """  Trick Initialization """
-# variable_server = VariableServer(args.trickAddr, args.trickPort)
+if args.trickEnabled:
+    variable_server = VariableServer(args.trickAddr, args.trickPort)
 print("connected to trick")
 
 with Ice.initialize(sys.argv) as communicator:
@@ -79,13 +82,15 @@ with Ice.initialize(sys.argv) as communicator:
                 GPIO.output(4, 0)
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_DEPRESS', 'ON'))
                 payload['depress_pump'] = 'true'
-                # variable_server.set_value('dyn.uia.oxygen.depress_pump', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.oxygen.depress_pump', 1)
             else:
                 GPIO.output(17,0)
                 GPIO.output(4, 1)
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_DEPRESS', 'OFF'))
                 payload['depress_pump'] = 'false'
-                # variable_server.set_value('dyn.uia.oxygen.depress_pump', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.oxygen.depress_pump', 0)
         #EV1
         #green led only
             #EMU1 on/off
@@ -93,43 +98,51 @@ with Ice.initialize(sys.argv) as communicator:
                 GPIO.output(27,1)
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_POWER', 'ON'))
                 payload['emu1'] = 'true'
-                # variable_server.set_value('dyn.uia.emu[0].power.state', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[0].power.state', 1)
             else:
                 GPIO.output(27,0)
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_POWER', 'OFF'))
                 payload['emu1'] = 'false'
-                # variable_server.set_value('dyn.uia.emu[0].power.state', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[0].power.state', 0)
 
 
             #EV1 SUPPLY on/off
             if (GPIO.input(10) == False):
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_SUPPLY', 'ON'))
                 payload['ev1_supply'] = 'true'
-                # variable_server.set_value('dyn.uia.ev[0].water.supply', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[0].water.supply', 1)
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_SUPPLY', 'OFF'))
                 payload['ev1_supply'] = 'false'
-                # variable_server.set_value('dyn.uia.ev[0].water.supply', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[0].water.supply', 0)
 
             #EV1 WASTE on/off
             if (GPIO.input(9) == False):
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_WASTE', 'ON'))
                 payload['ev1_waste'] = 'true'
-                # variable_server.set_value('dyn.uia.ev[0].water.waste', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[0].water.waste', 1)
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV1_WATER_WASTE', 'OFF'))
                 payload['ev1_waste'] = 'false'
-                # variable_server.set_value('dyn.uia.ev[0].water.waste', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[0].water.waste', 0)
 
             #EMU1 OXYGEN on/off
             if (GPIO.input(25) == False):
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_OXYGEN', 'ON'))
                 payload['emu1_O2'] = 'true'
-                # variable_server.set_value('dyn.uia.emu[0].oxygen.valve', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[0].oxygen.valve', 1)
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU1_OXYGEN', 'OFF'))
                 payload['emu1_O2'] = 'false'
-                # variable_server.set_value('dyn.uia.emu[0].oxygen.valve', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[0].oxygen.valve', 0)
 
         #EV2
         #green led only
@@ -138,61 +151,72 @@ with Ice.initialize(sys.argv) as communicator:
                 GPIO.output(23,1)
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_POWER', 'ON'))
                 payload ['emu2'] = 'true'
-                # variable_server.set_value('dyn.uia.emu[1].power.state', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[1].power.state', 1)
             else:
                 GPIO.output(23,0)
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_POWER', 'OFF'))
                 payload ['emu2'] = 'false'
-                # variable_server.set_value('dyn.uia.emu[1].power.state', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[1].power.state', 0)
 
             #EV2 SUPPLY on/off
             if (GPIO.input(26) == False):
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_SUPPLY', 'ON'))
                 payload['ev2_supply'] = 'true'
-                # variable_server.set_value('dyn.uia.ev[1].water.supply', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[1].water.supply', 1)
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_SUPPLY', 'OFF'))
                 payload['ev2_supply'] = 'false'
-                # variable_server.set_value('dyn.uia.ev[1].water.supply', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[1].water.supply', 0)
 
             #EV2 WASTE on/off
             if (GPIO.input(16) == False):
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_WASTE', 'ON'))
                 payload['ev2_waste'] = 'true'
-                # variable_server.set_value('dyn.uia.ev[1].water.waste', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[1].water.waste', 1)
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EV2_WATER_WASTE', 'OFF'))
                 payload['ev2_waste'] = 'false'
-                # variable_server.set_value('dyn.uia.ev[1].water.waste', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.ev[1].water.waste', 0)
 
             #EMU2 OXYGEN on/off
             if (GPIO.input(20) == False):
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_OXYGEN', 'ON'))
                 payload['emu2_O2'] = 'true'
-                # variable_server.set_value('dyn.uia.emu[1].oxygen.valve', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[1].oxygen.valve', 1)
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.EMU2_OXYGEN', 'OFF'))
                 payload['emu2_O2'] = 'false'
-                # variable_server.set_value('dyn.uia.emu[1].oxygen.valve', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.emu[1].oxygen.valve', 0)
 
         #O2 Vent
             if (GPIO.input(21) == False):
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_VENT', 'ON'))
                 payload['O2_vent'] = 'true'
-                # variable_server.set_value('dyn.uia.oxygen.vent', 1)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.oxygen.vent', 1)
             else:
                 seqTelem.append(gov.nasa.jsc.er.TelemetryData('HAL.UIA.SWITCH_PANEL.O2_VENT', 'OFF'))
                 payload['O2_vent'] = 'false'
-                # variable_server.set_value('dyn.uia.oxygen.vent', 0)
+                if args.trickEnabled:
+                    variable_server.set_value('dyn.uia.oxygen.vent', 0)
 
             # IceStorm publish
             telemMessage = gov.nasa.jsc.er.TelemetryMessage(header, seqTelem)
             panel.transfer(telemMessage)
             
-            # oxygen_supply_pressure = variable_server.get_value('dyn.uia.oxygen.supply_pressure')
-            # emu1_voltage = variable_server.get_value('dyn.uia.emu[0].power.voltage')
-            # emu2_voltage = variable_server.get_value('dyn.uia.emu[1].power.voltage')
-            # print("Oxygen Supply Pressure: {}\nEMU1 Voltage: {}\nEMU2 Voltage: {}".format(oxygen_supply_pressure, emu1_voltage, emu2_voltage))
+            if args.trickEnabled:
+                oxygen_supply_pressure = variable_server.get_value('dyn.uia.oxygen.supply_pressure')
+                emu1_voltage = variable_server.get_value('dyn.uia.emu[0].power.voltage')
+                emu2_voltage = variable_server.get_value('dyn.uia.emu[1].power.voltage')
+                print("Oxygen Supply Pressure: {}\nEMU1 Voltage: {}\nEMU2 Voltage: {}".format(oxygen_supply_pressure, emu1_voltage, emu2_voltage))
             print(payload)
             time.sleep(.250)
     
