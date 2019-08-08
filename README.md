@@ -35,3 +35,6 @@ Example executions:
     ```bash
     $ python uiaPanelPublisher.py --iceAddr=192.168.3.100 --Ice.Override.ConnectTimeout=2000
     ```
+
+## NOTE
+If this is the first time that you are running eProc and this application, you may run into some issues. The issue occurs whenever the publisher attempts to connect to Ice. The Ice server stores a log of its hosts and will attempt to establish a connection to each of these hosts (yours just may be further down the line). 
