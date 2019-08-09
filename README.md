@@ -2,9 +2,9 @@
 ZeroC IceStorm Publisher and Subscriber in Python for UIA Panel with Trick Connection
 
 ## Getting Started
-1. Make sure eProc is installed and running
-2. Make sure the Trick Simulation is running (optional)
-3. Install [ZeroC Ice](https://zeroc.com/downloads/ice) for Python
+1. Make sure eProc and the Ice server is installed and running on your host (Windows) machine. 
+2. Make sure the Trick Simulation is running (optional) on your Ubuntu machine.
+3. On the Raspberry Pi, install [ZeroC Ice](https://zeroc.com/downloads/ice) for Python
     - `pip install zeroc-ice`
 4. Clone this repository onto Raspberry Pi
 
