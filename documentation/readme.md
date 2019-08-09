@@ -7,5 +7,8 @@ You need to make sure that you have the procedure as well as all of its assets l
 ## Loading CDD File
 You need to include the UIA_CDD.XML in order for the procedure to recognize the UIA panel variables.
 1. Go to the advanced tab of ePat and select **manage** in the upper right-hand corner
-
   ![alt text](https://github.com/ddelago/UIA-Panel-Ice-Publisher/blob/master/documentation/ePat1.png)
+2. Select Choose File and import the UIA_CDD.XML file
+  ![alt text](https://github.com/ddelago/UIA-Panel-Ice-Publisher/blob/master/documentation/ePat2.png)
+3. Select UIA_CDD.XML in the table and then publish
+  ![alt text](https://github.com/ddelago/UIA-Panel-Ice-Publisher/blob/master/documentation/ePat3.png)
