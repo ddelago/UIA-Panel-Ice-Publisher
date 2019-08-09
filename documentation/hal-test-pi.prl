@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prl:Procedure xmlns:prl="http://www.er2.jsc.nasa.gov/prl"
+               procedureIdentifier="hal-test-pi">
+   <prl:MetaData>
+      <prl:Version>1</prl:Version>
+      <prl:SchemaVersion>4.0.10</prl:SchemaVersion>
+      <prl:Date>8/6/2019, 12:31:11 PM</prl:Date>
+      <prl:Status/>
+      <prl:History/>
+      <prl:ProcedureType>Nominal</prl:ProcedureType>
+      <prl:Author>localhost</prl:Author>
+      <prl:AuthoringTool>EPAT 0.3.1</prl:AuthoringTool>
+      <prl:AuthorRationale>
+         <prl:Paragraph>
+            <prl:Text/>
+         </prl:Paragraph>
+      </prl:AuthorRationale>
+      <prl:AuthoringReferences/>
+      <prl:Frequency/>
+      <prl:Keywords/>
+      <prl:Book/>
+      <prl:Applicability/>
+      <prl:ProcCode/>
+   </prl:MetaData>
+   <prl:Objective>
+      <prl:Html>
+         <p xmlns="http://www.w3.org/1999/xhtml"/>
+      </prl:Html>
+   </prl:Objective>
+   <prl:Parameters/>
+   <prl:LocalVariables/>
+   <prl:ExitModes>
+      <prl:ExitMode exitModeIdentifier="exitSuccess">
+         <prl:Result>1</prl:Result>
+         <prl:Message>
+            <prl:Text>Success</prl:Text>
+         </prl:Message>
+      </prl:ExitMode>
+      <prl:ExitMode exitModeIdentifier="exitFailure">
+         <prl:Result>0</prl:Result>
+         <prl:Message>
+            <prl:Text>Failure</prl:Text>
+         </prl:Message>
+      </prl:ExitMode>
+   </prl:ExitModes>
+   <prl:ProcedureTitle>
+      <prl:ProcedureNumber>hal-test-pi</prl:ProcedureNumber>
+      <prl:Text>UIA Test RPI</prl:Text>
+   </prl:ProcedureTitle>
+   <prl:Step stepIdentifier="step1">
+      <prl:StepTitle>
+         <prl:StepNumber>1</prl:StepNumber>
+         <prl:Html>
+            <p xmlns="http://www.w3.org/1999/xhtml">Step One</p>
+         </prl:Html>
+      </prl:StepTitle>
+      <prl:ManualInstruction instructionIdentifier="instr1555075306044">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>UIA Panel Procedure</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398115717">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="f47c35eb-29ed-4ce2-b6bd-4143827966a2"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">IDENTIFY EV 1,2 Power Switch</p>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451416296">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">TURN ON EMU1 POWER</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EMU1_POWER</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EMU1_POWER</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451418231">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">TURN ON EMU2 POWER</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EMU2_POWER</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EMU2_POWER</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398135965">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="5439a5bf-d757-4a2a-b0c4-324b0dba182b"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">IDENTIFY EV 1,2 Power LED</p>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398146373">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="1df1ce79-504f-43a1-aece-640fce623e35"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>IDENTIFY O2 Supply Pressure</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398156069">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="6115e327-60dc-44a3-a160-e82c57885b68"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>IDENTIFY O2 Valve</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451757961">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">OPEN EMU1 OXYGEN VALVE</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EMU1_OXYGEN</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EMU1_OXYGEN</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451761198">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">OPEN EMU2 OXYGEN VALVE</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EMU2_OXYGEN</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EMU2_OXYGEN</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398166333">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="25368cec-5bc0-43d2-b72c-b47f5cad7cc0"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>IDENTIFY Water Supply</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451770692">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">OPEN EV1 WATER SUPPLY</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EV1_WATER_SUPPLY</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EV1_WATER_SUPPLY</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451775646">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">OPEN EV2 WATER SUPPLY</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EV2_WATER_SUPPLY</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EV2_WATER_SUPPLY</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398177421">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="cdd112f1-9af9-44e6-9114-c6e437f2b5a3"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>IDENTIFY Water Waste</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451785719">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">OPEN EV1 WATER WASTE</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EV1_WATER_WASTE</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EV1_WATER_WASTE</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451789543">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">OPEN EV2 WATER WASTE</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>EV2_WATER_WASTE</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.EV2_WATER_WASTE</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398199021">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="0be6e4a1-c0ba-470a-8423-50d641ec7d82"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>IDENTIFY O2 Vent</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:VerifyInstruction instructionIdentifier="instr1560451800214">
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml">OPEN O2 VENT</p>
+            </prl:Html>
+         </prl:Description>
+         <prl:VerifyGoal>
+            <prl:TargetDescription>
+               <prl:Text>O2_VENT</prl:Text>
+            </prl:TargetDescription>
+            <prl:CurrentValue>
+               <prl:DataReference dataType="enumeration" source="system_id">
+                  <prl:Identifier>HAL.UIA.SWITCH_PANEL.O2_VENT</prl:Identifier>
+               </prl:DataReference>
+            </prl:CurrentValue>
+            <prl:Operator operator="equal"/>
+            <prl:TargetValue>
+               <prl:Constant dataType="enumeration">
+                  <prl:EnumerationValue>
+                     <prl:Name>ON</prl:Name>
+                     <prl:Value>1</prl:Value>
+                  </prl:EnumerationValue>
+               </prl:Constant>
+            </prl:TargetValue>
+         </prl:VerifyGoal>
+      </prl:VerifyInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552398213325">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="3aeb42df-723e-4d7c-ad6a-65f0f606383d"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>IDENTIFY Mating Bolts</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:ManualInstruction instructionIdentifier="instr1552405580898">
+         <prl:VR type="basic"
+                 name="HAL_3_4.map"
+                 itemId="ef8921ef-f1dd-46df-b06f-cdd70ddfcfa9"/>
+         <prl:Description>
+            <prl:Html>
+               <p xmlns="http://www.w3.org/1999/xhtml"/>
+            </prl:Html>
+         </prl:Description>
+         <prl:InstructionMessage>
+            <prl:Html>
+               <span xmlns="http://www.w3.org/1999/xhtml">
+                  <p>IDENTIFY SCU Connect</p>
+               </span>
+            </prl:Html>
+         </prl:InstructionMessage>
+      </prl:ManualInstruction>
+      <prl:ExitProcedure exitModeReference="exitSuccess" instructionIdentifier="instr9213"/>
+   </prl:Step>
+</prl:Procedure>
