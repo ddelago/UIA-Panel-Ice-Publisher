@@ -20,6 +20,10 @@ parser.add_argument(
     '--iceAddr', type=str, help='Ice IP Address (eProc)', required=True)
 parser.add_argument(
     '--Ice.Override.ConnectTimeout', type=str, help='Timeout value for Ice connection attempts', required=False)
+parser.add_argument(
+    '--Ice.Trace.Protocol', action='store_true', help='Enabled Ice tracing', required=False)
+parser.add_argument(
+    '--Ice.Trace.Network', type=str, help='Enable Ice Network tracing', required=False)
 
 # Array for all arguments passed to script
 args = parser.parse_args()
@@ -31,6 +35,7 @@ if args.trickAddr is not None and args.trickPort is not None:
     variable_server = VariableServer(args.trickAddr, args.trickPort)
     print("connected to trick")
 
+""" Begin Connection to Ice """
 with Ice.initialize(sys.argv) as communicator:
     print("Initializing IceStorm")
     """  ICE Storm Initialization """
